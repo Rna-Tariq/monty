@@ -85,12 +85,12 @@ void find_function(char *opcode, char *value, int ln, int format)
 	int flag;
 
 	instruction_t function_list[] = {
-		{"push", insert_in_stack},
+		{"push", add_to_stack},
 		{"pall", print_stack},
 		{"pint", print_top},
 		{"pop", pop_top},
 		{"nop", nop},
-		{"swap", swap},
+		{"swap", swap_nodes},
 		{"add", add_nodes},
 		{"sub", sub_nodes},
 		{"div", div_nodes},
