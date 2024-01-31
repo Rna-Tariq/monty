@@ -16,7 +16,7 @@ void get_err(int error_code, ...)
 {
 	va_list ag;
 	char *op;
-	int line_num;
+	int l_num;
 
 	va_start(ag, error_code);
 	switch (error_code)
@@ -29,9 +29,9 @@ void get_err(int error_code, ...)
 				va_arg(ag, char *));
 			break;
 		case 3:
-			line_num = va_arg(ag, int);
+			l_num = va_arg(ag, int);
 			op = va_arg(ag, char *);
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_num, op);
+			fprintf(stderr, "L%d: unknown instruction %s\n", l_num, op);
 			break;
 		case 4:
 			fprintf(stderr, "Error: malloc failed\n");
@@ -58,7 +58,7 @@ void get_more_err(int error_code, ...)
 {
 	va_list ag;
 	char *op;
-	int line_num;
+	int l_num;
 
 	va_start(ag, error_code);
 	switch (error_code)
@@ -72,9 +72,9 @@ void get_more_err(int error_code, ...)
 				va_arg(ag, int));
 			break;
 		case 8:
-			line_num = va_arg(ag, unsigned int);
+			l_num = va_arg(ag, unsigned int);
 			op = va_arg(ag, char *);
-			fprintf(stderr, "L%d: can't %s, stack too short\n", line_num, op);
+			fprintf(stderr, "L%d: can't %s, stack too short\n", l_num, op);
 			break;
 		case 9:
 			fprintf(stderr, "L%d: division by zero\n",
@@ -96,17 +96,17 @@ void get_more_err(int error_code, ...)
 void get_string_err(int error_code, ...)
 {
 	va_list ag;
-	int line_num;
+	int l_num;
 
 	va_start(ag, error_code);
-	line_num = va_arg(ag, int);
+	l_num = va_arg(ag, int);
 	switch (error_code)
 	{
 		case 10:
-			fprintf(stderr, "L%d: can't pchar, value out of range\n", line_num);
+			fprintf(stderr, "L%d: can't pchar, value out of range\n", l_num);
 			break;
 		case 11:
-			fprintf(stderr, "L%d: can't pchar, stack empty\n", line_num);
+			fprintf(stderr, "L%d: can't pchar, stack empty\n", l_num);
 			break;
 		default:
 			break;
